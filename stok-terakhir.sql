@@ -13,4 +13,4 @@ insert into m_history_barang (tanggal, kode_barang, stok_akhir) values ('03/01/0
 insert into m_history_barang (tanggal, kode_barang, stok_akhir) values ('04/01/09', 'A', 5);
 insert into m_history_barang (tanggal, kode_barang, stok_akhir) values ('04/01/09', 'A', 4);
 
-select kode_barang, (select stok_akhir from m_history_barang secondMkd where secondMkd.kode_barang = mkd.kode_barang order by secondMkd.tanggal desc limit 1) from m_history_barang mkd group by kode_barang order by mkd.kode_barang;
+select kode_barang, (select stok_akhir from m_history_barang secondMkd where secondMkd.kode_barang = mkd.kode_barang order by secondMkd.tanggal desc, secondMkd.kode_stok desc limit 1) from m_history_barang mkd group by kode_barang order by mkd.kode_barang;
